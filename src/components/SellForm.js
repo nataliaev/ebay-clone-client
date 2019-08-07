@@ -1,7 +1,7 @@
 import React from "react";
 import { addOnePost } from "../actions";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import "./SellForm.css";
 
 class SellForm extends React.Component {
@@ -9,7 +9,7 @@ class SellForm extends React.Component {
     title: "",
     url: "",
     description: "",
-    price: null,
+    price: "",
     email: "",
     phone: ""
   };
@@ -23,6 +23,14 @@ class SellForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.addOnePost(this.state);
+    this.setState({
+      title: "",
+      url: "",
+      description: "",
+      price: "",
+      email: "",
+      phone: ""
+    });
   };
 
   render() {
@@ -35,6 +43,7 @@ class SellForm extends React.Component {
             type="text"
             name="title"
             placeholder="title"
+            value={this.state.title}
             onChange={this.handleChange}
           />
           <input
@@ -42,6 +51,7 @@ class SellForm extends React.Component {
             type="text"
             name="url"
             placeholder="photo url"
+            value={this.state.url}
             onChange={this.handleChange}
           />
 
@@ -50,6 +60,7 @@ class SellForm extends React.Component {
             type="text"
             name="description"
             placeholder="description"
+            value={this.state.description}
             onChange={this.handleChange}
           />
           <input
@@ -57,6 +68,7 @@ class SellForm extends React.Component {
             type="text"
             name="price"
             placeholder="price"
+            value={this.state.price}
             onChange={this.handleChange}
           />
           <input
@@ -64,6 +76,7 @@ class SellForm extends React.Component {
             type="text"
             name="email"
             placeholder="e-mail"
+            value={this.state.email}
             onChange={this.handleChange}
           />
           <input
@@ -71,11 +84,14 @@ class SellForm extends React.Component {
             type="text"
             name="phone"
             placeholder="phone number"
+            value={this.state.phone}
             onChange={this.handleChange}
           />
           <input className="input-button" type="submit" value="Submit" />
         </form>
-        <Link to='/'><button className="input-button">Back to the main page</button></Link>
+        <Link to="/">
+          <button className="input-button">Back to the main page</button>
+        </Link>
       </div>
     );
   }
