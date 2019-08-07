@@ -1,19 +1,21 @@
 import React from 'react';
-//import { connect } from "react-redux"
+import { connect } from "react-redux"
 import PostDetails from "./PostDetails"
-import superagent from "superagent"
 
-export default class PostDetailsContainer extends React.Component {
-  async componentDidMount() {
-    const result = await superagent.get('')
-    return result
-  }
-
+class PostDetailsContainer extends React.Component {
   render() {
+    const post = this.props.post.find(post => post.id === this.props.match.params)
+
     return (
       <div>
-        <PostDetails title={} url={} description={} price={} email={} phone={} />
+        <PostDetails {...post} />
       </div>
     )
   }
 }
+
+const MapStateToProps = state => ({
+  post: state.post
+})
+
+export default connect(MapStateToProps)(PostDetailsContainer)
