@@ -2,12 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PostList from "./PostList";
-import superagent from "superagent";
+import { addPosts, addOnePost } from "../actions";
 
 class PostListContainer extends React.Component {
   async componentDidMount() {
-    const result = await superagent.get("");
-    return result;
+    this.props.addPosts();
   }
 
   render() {
@@ -27,4 +26,7 @@ const MapStateToProps = state => ({
   post: state.post
 });
 
-export default connect(MapStateToProps)(PostListContainer);
+export default connect(
+  MapStateToProps,
+  { addPosts, addOnePost }
+)(PostListContainer);
