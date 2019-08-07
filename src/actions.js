@@ -5,7 +5,7 @@ export const ADD_POST = "ADD_POST";
 
 export const addPosts = () => {
   return function(dispatch, getState) {
-    if (getState().post.length === 0) {
+    if (!getState().post || getState().post.length === 0) {
       return superagent
         .get("https://still-hollows-81617.herokuapp.com/posts")
         .then(response => {
