@@ -1,6 +1,8 @@
 import React from "react";
 import { addOnePost } from "../actions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom"
+import "./SellForm.css";
 
 class SellForm extends React.Component {
   state = {
@@ -26,14 +28,17 @@ class SellForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <div className="form-title">Add your advertisment</div>
+        <form className="form" onSubmit={this.handleSubmit}>
           <input
+            className="input-form"
             type="text"
             name="title"
             placeholder="title"
             onChange={this.handleChange}
           />
           <input
+            className="input-form"
             type="text"
             name="url"
             placeholder="photo url"
@@ -41,31 +46,36 @@ class SellForm extends React.Component {
           />
 
           <input
+            className="input-form"
             type="text"
             name="description"
             placeholder="description"
             onChange={this.handleChange}
           />
           <input
+            className="input-form"
             type="text"
             name="price"
             placeholder="price"
             onChange={this.handleChange}
           />
           <input
+            className="input-form"
             type="text"
             name="email"
             placeholder="e-mail"
             onChange={this.handleChange}
           />
           <input
+            className="input-form"
             type="text"
             name="phone"
             placeholder="phone number"
             onChange={this.handleChange}
           />
-          <input type="submit" value="Submit" />
+          <input className="input-button" type="submit" value="Submit" />
         </form>
+        <Link to='/'><button className="input-button">Back to the main page</button></Link>
       </div>
     );
   }
